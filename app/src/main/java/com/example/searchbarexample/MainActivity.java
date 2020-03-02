@@ -1,9 +1,7 @@
 package com.example.searchbarexample;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.View;
-import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -24,8 +22,6 @@ public class MainActivity extends AppCompatActivity implements CreateMovieDialog
     private FloatingActionButton fab;
     private MovieRecyclerViewAdapter adapter;
     private MainViewModel viewModel;
-//    SECTION 3: Adding Querying to Adapter
-//    private String curQuery = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -51,8 +47,6 @@ public class MainActivity extends AppCompatActivity implements CreateMovieDialog
             public void onChanged(List<Movie> movies)
             {
                 adapter.updateMovies(movies);
-//                SECTION 3: Adding Queries to The Adapter
-//                adapter.getFilter().filter(curQuery);
             }
         });
 
@@ -75,38 +69,6 @@ public class MainActivity extends AppCompatActivity implements CreateMovieDialog
             }
         }).attachToRecyclerView(moviesRecyclerView);
     }
-
-//    SECTION 2: Setup Search View And Listen For Queries
-//    @Override
-//    public boolean onCreateOptionsMenu(Menu menu)
-//    {
-//        getMenuInflater().inflate(R.menu.search_menu, menu);
-//        SearchView searchView = (SearchView) menu.findItem(R.id.searchButton).getActionView();
-//        searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener()
-//        {
-//            @Override
-//            public boolean onQueryTextSubmit(String query)
-//            {
-//                return false;
-//            }
-//
-//            @Override
-//            public boolean onQueryTextChange(String newText)
-//            {
-////                SECTION 3: Adding Queries to The Adapter
-////                curQuery = newText;
-////                adapter.getFilter().filter(curQuery);
-//                if(curQuery.isEmpty())
-//                    fab.setVisibility(View.VISIBLE);
-//                else
-//                    fab.setVisibility(View.GONE);
-//
-//                moviesRecyclerView.scrollToPosition(0);
-//                return false;
-//            }
-//        });
-//        return true;
-//    }
 
     @Override
     public void onPositiveButtonClicked(DialogFragment dialog, Movie newMovie)

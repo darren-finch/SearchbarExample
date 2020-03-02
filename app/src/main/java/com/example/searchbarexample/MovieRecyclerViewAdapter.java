@@ -3,8 +3,6 @@ package com.example.searchbarexample;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Filter;
-import android.widget.Filterable;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -12,15 +10,11 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.searchbarexample.room.Movie;
 
-import java.util.ArrayList;
 import java.util.List;
 
-//    SECTION 3: Adding Queries to The Adapter
 public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder>// implements Filterable
 {
     private List<Movie> moviesDisplay;
-//    SECTION 3: Adding Queries to The Adapter
-//    private List<Movie> moviesData;
 
     MovieRecyclerViewAdapter(List<Movie> movies)
     {
@@ -58,46 +52,9 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
     void updateMovies(List<Movie> movies)
     {
-//        SECTION 3: Adding Queries to The Adapter
-//        moviesData = movies;
+        moviesDisplay = movies;
         notifyDataSetChanged();
     }
-
-//    SECTION 3: Adding Queries to The Adapter
-//    @Override
-//    public Filter getFilter()
-//    {
-//        return new Filter()
-//        {
-//            @Override
-//            protected FilterResults performFiltering(CharSequence constraint)
-//            {
-//                FilterResults results = new FilterResults();
-//                String lowerCaseQuery = constraint.toString().toLowerCase();
-//                ArrayList<Movie> moviesQueryList = new ArrayList<>();
-//                for(Movie movie : MovieRecyclerViewAdapter.this.moviesData)
-//                {
-//                    if (movie.getMovieName().toLowerCase().contains(lowerCaseQuery) ||
-//                            movie.getMovieActors().toLowerCase().contains(lowerCaseQuery) ||
-//                            movie.getMovieDescription().toLowerCase().contains(lowerCaseQuery) ||
-//                            movie.getMovieReleaseDate().toLowerCase().contains(lowerCaseQuery))
-//                    {
-//                        moviesQueryList.add(movie);
-//                    }
-//                }
-//                results.values = moviesQueryList;
-//                results.count = moviesQueryList.size();
-//                return results;
-//            }
-//
-//            @Override
-//            protected void publishResults(CharSequence constraint, FilterResults results)
-//            {
-//                moviesDisplay = (ArrayList<Movie>) results.values;
-//                notifyDataSetChanged();
-//            }
-//        };
-//    }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder
     {
