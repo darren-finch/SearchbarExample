@@ -15,11 +15,12 @@ import com.example.searchbarexample.room.Movie;
 import java.util.ArrayList;
 import java.util.List;
 
-//SECTION 2: Creating The Adapter
-public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder> implements Filterable
+//    SECTION 3: Adding Queries to The Adapter
+public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecyclerViewAdapter.MovieViewHolder>// implements Filterable
 {
     private List<Movie> moviesDisplay;
-    private List<Movie> moviesData;
+//    SECTION 3: Adding Queries to The Adapter
+//    private List<Movie> moviesData;
 
     MovieRecyclerViewAdapter(List<Movie> movies)
     {
@@ -57,44 +58,46 @@ public class MovieRecyclerViewAdapter extends RecyclerView.Adapter<MovieRecycler
 
     void updateMovies(List<Movie> movies)
     {
-        moviesData = movies;
+//        SECTION 3: Adding Queries to The Adapter
+//        moviesData = movies;
         notifyDataSetChanged();
     }
 
-    @Override
-    public Filter getFilter()
-    {
-        return new Filter()
-        {
-            @Override
-            protected FilterResults performFiltering(CharSequence constraint)
-            {
-                FilterResults results = new FilterResults();
-                String lowerCaseQuery = constraint.toString().toLowerCase();
-                ArrayList<Movie> moviesQueryList = new ArrayList<>();
-                for(Movie movie : MovieRecyclerViewAdapter.this.moviesData)
-                {
-                    if (movie.getMovieName().toLowerCase().contains(lowerCaseQuery) ||
-                            movie.getMovieActors().toLowerCase().contains(lowerCaseQuery) ||
-                            movie.getMovieDescription().toLowerCase().contains(lowerCaseQuery) ||
-                            movie.getMovieReleaseDate().toLowerCase().contains(lowerCaseQuery))
-                    {
-                        moviesQueryList.add(movie);
-                    }
-                }
-                results.values = moviesQueryList;
-                results.count = moviesQueryList.size();
-                return results;
-            }
-
-            @Override
-            protected void publishResults(CharSequence constraint, FilterResults results)
-            {
-                moviesDisplay = (ArrayList<Movie>) results.values;
-                notifyDataSetChanged();
-            }
-        };
-    }
+//    SECTION 3: Adding Queries to The Adapter
+//    @Override
+//    public Filter getFilter()
+//    {
+//        return new Filter()
+//        {
+//            @Override
+//            protected FilterResults performFiltering(CharSequence constraint)
+//            {
+//                FilterResults results = new FilterResults();
+//                String lowerCaseQuery = constraint.toString().toLowerCase();
+//                ArrayList<Movie> moviesQueryList = new ArrayList<>();
+//                for(Movie movie : MovieRecyclerViewAdapter.this.moviesData)
+//                {
+//                    if (movie.getMovieName().toLowerCase().contains(lowerCaseQuery) ||
+//                            movie.getMovieActors().toLowerCase().contains(lowerCaseQuery) ||
+//                            movie.getMovieDescription().toLowerCase().contains(lowerCaseQuery) ||
+//                            movie.getMovieReleaseDate().toLowerCase().contains(lowerCaseQuery))
+//                    {
+//                        moviesQueryList.add(movie);
+//                    }
+//                }
+//                results.values = moviesQueryList;
+//                results.count = moviesQueryList.size();
+//                return results;
+//            }
+//
+//            @Override
+//            protected void publishResults(CharSequence constraint, FilterResults results)
+//            {
+//                moviesDisplay = (ArrayList<Movie>) results.values;
+//                notifyDataSetChanged();
+//            }
+//        };
+//    }
 
     static class MovieViewHolder extends RecyclerView.ViewHolder
     {
